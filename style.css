@@ -253,7 +253,7 @@ p {
 }
 
 .lookup-divider::after {
-    content: '';
+    content: 'OR';
     background: white;
     padding: 0 1rem;
     position: relative;
@@ -312,12 +312,12 @@ p {
 .concern-grid {
     display: grid;
     gap: 1rem;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .concern-button {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     background: white;
     color: #333;
     border: 2px solid #e0e0e0;
@@ -346,6 +346,7 @@ p {
 .concern-icon {
     font-size: 1.5rem;
     margin-right: 0.8rem;
+    margin-top: 0.1rem;
     flex-shrink: 0;
 }
 
