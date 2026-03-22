@@ -26,8 +26,8 @@ const LOCATION_DATA = [
             email: 'council@randwick.nsw.gov.au'
         },
         stateMP: {
-            name: 'Ron Hoenig',
-            email: 'heffron@parliament.nsw.gov.au'
+            name: 'Marjorie O\'Neill',
+            email: 'coogee@parliament.nsw.gov.au'
         },
         federalMP: {
             name: 'Matt Thistlethwaite',
@@ -43,8 +43,8 @@ const LOCATION_DATA = [
             email: 'council@randwick.nsw.gov.au'
         },
         stateMP: {
-            name: 'Michael Daley',
-            email: 'maroubra@parliament.nsw.gov.au'
+            name: 'Marjorie O\'Neill',
+            email: 'coogee@parliament.nsw.gov.au'
         },
         federalMP: {
             name: 'Matt Thistlethwaite',
@@ -77,8 +77,8 @@ const LOCATION_DATA = [
             email: 'council@randwick.nsw.gov.au'
         },
         stateMP: {
-            name: 'Ron Hoenig',
-            email: 'heffron@parliament.nsw.gov.au'
+            name: 'Marjorie O\'Neill',
+            email: 'coogee@parliament.nsw.gov.au'
         },
         federalMP: {
             name: 'Matt Thistlethwaite',
@@ -94,8 +94,8 @@ const LOCATION_DATA = [
             email: 'council@randwick.nsw.gov.au'
         },
         stateMP: {
-            name: 'Ron Hoenig',
-            email: 'heffron@parliament.nsw.gov.au'
+            name: 'Marjorie O\'Neill',
+            email: 'coogee@parliament.nsw.gov.au'
         },
         federalMP: {
             name: 'Matt Thistlethwaite',
@@ -170,6 +170,40 @@ const LOCATION_DATA = [
             email: 'matt.thistlethwaite.mp@aph.gov.au'
         }
     },
+    {
+        suburb: 'Mascot',
+        postcode: '2020',
+        ward: 'N/A',
+        council: {
+            name: 'Bayside Council',
+            email: 'council@bayside.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Ron Hoenig',
+            email: 'heffron@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Matt Thistlethwaite',
+            email: 'matt.thistlethwaite.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Edgecliff',
+        postcode: '2025',
+        ward: 'N/A',
+        council: {
+            name: 'Woollahra Municipal Council',
+            email: 'council@woollahra.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Kellie Sloane',
+            email: 'vaucluse@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Tanya Plibersek',
+            email: 'tanya.plibersek.mp@aph.gov.au'
+        }
+    },
     
     // Inner West Sydney
     {
@@ -238,6 +272,57 @@ const LOCATION_DATA = [
         federalMP: {
             name: 'Tanya Plibersek',
             email: 'tanya.plibersek.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Balmain',
+        postcode: '2041',
+        ward: 'N/A',
+        council: {
+            name: 'Inner West Council',
+            email: 'council@innerwest.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Kobi Shetty',
+            email: 'balmain@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Tanya Plibersek',
+            email: 'tanya.plibersek.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Alexandria',
+        postcode: '2040',
+        ward: 'N/A',
+        council: {
+            name: 'Inner West Council',
+            email: 'council@innerwest.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Kobi Shetty',
+            email: 'balmain@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Tanya Plibersek',
+            email: 'tanya.plibersek.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Five Dock',
+        postcode: '2046',
+        ward: 'N/A',
+        council: {
+            name: 'City of Canada Bay Council',
+            email: 'council@canadabay.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Stephanie Di Pasqua',
+            email: 'drummoyne@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Sally Sitou',
+            email: 'sally.sitou.mp@aph.gov.au'
         }
     },
     {
@@ -506,8 +591,8 @@ const LOCATION_DATA = [
             email: 'council@woollahra.nsw.gov.au'
         },
         stateMP: {
-            name: 'Alex Greenwich',
-            email: 'sydney@parliament.nsw.gov.au'
+            name: 'Ron Hoenig',
+            email: 'heffron@parliament.nsw.gov.au'
         },
         federalMP: {
             name: 'Tanya Plibersek',
@@ -517,6 +602,23 @@ const LOCATION_DATA = [
     {
         suburb: 'Bondi',
         postcode: '2026',
+        ward: 'N/A',
+        council: {
+            name: 'Waverley Council',
+            email: 'council@waverley.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Marjorie O\'Neill',
+            email: 'coogee@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Tanya Plibersek',
+            email: 'tanya.plibersek.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Bondi Beach',
+        postcode: '2027',
         ward: 'N/A',
         council: {
             name: 'Waverley Council',
@@ -680,8 +782,178 @@ const LOCATION_DATA = [
             email: 'council@bayside.nsw.gov.au'
         },
         stateMP: {
-            name: 'Stephen Kamper',
-            email: 'rockdale@parliament.nsw.gov.au'
+            name: 'Chris Minns',
+            email: 'kogarah@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Matt Thistlethwaite',
+            email: 'matt.thistlethwaite.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Kogarah Bay',
+        postcode: '2208',
+        ward: 'N/A',
+        council: {
+            name: 'Bayside Council',
+            email: 'council@bayside.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Chris Minns',
+            email: 'kogarah@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Matt Thistlethwaite',
+            email: 'matt.thistlethwaite.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Beverley Park',
+        postcode: '2220',
+        ward: 'N/A',
+        council: {
+            name: 'Bayside Council',
+            email: 'council@bayside.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Chris Minns',
+            email: 'kogarah@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Matt Thistlethwaite',
+            email: 'matt.thistlethwaite.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Allawah',
+        postcode: '2222',
+        ward: 'N/A',
+        council: {
+            name: 'Bayside Council',
+            email: 'council@bayside.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Chris Minns',
+            email: 'kogarah@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Matt Thistlethwaite',
+            email: 'matt.thistlethwaite.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Blakehurst',
+        postcode: '2224',
+        ward: 'N/A',
+        council: {
+            name: 'Bayside Council',
+            email: 'council@bayside.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Chris Minns',
+            email: 'kogarah@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Matt Thistlethwaite',
+            email: 'matt.thistlethwaite.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Carss Park',
+        postcode: '2225',
+        ward: 'N/A',
+        council: {
+            name: 'Bayside Council',
+            email: 'council@bayside.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Chris Minns',
+            email: 'kogarah@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Matt Thistlethwaite',
+            email: 'matt.thistlethwaite.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Caringbah',
+        postcode: '2229',
+        ward: 'N/A',
+        council: {
+            name: 'Sutherland Shire Council',
+            email: 'council@sutherland.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Mark Speakman',
+            email: 'cronulla@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Matt Thistlethwaite',
+            email: 'matt.thistlethwaite.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Woolooware',
+        postcode: '2231',
+        ward: 'N/A',
+        council: {
+            name: 'Sutherland Shire Council',
+            email: 'council@sutherland.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Mark Speakman',
+            email: 'cronulla@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Matt Thistlethwaite',
+            email: 'matt.thistlethwaite.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Gunnamatta',
+        postcode: '2232',
+        ward: 'N/A',
+        council: {
+            name: 'Sutherland Shire Council',
+            email: 'council@sutherland.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Mark Speakman',
+            email: 'cronulla@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Matt Thistlethwaite',
+            email: 'matt.thistlethwaite.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Burraneer',
+        postcode: '2233',
+        ward: 'N/A',
+        council: {
+            name: 'Sutherland Shire Council',
+            email: 'council@sutherland.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Mark Speakman',
+            email: 'cronulla@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Matt Thistlethwaite',
+            email: 'matt.thistlethwaite.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Bonnet Bay',
+        postcode: '2234',
+        ward: 'N/A',
+        council: {
+            name: 'Sutherland Shire Council',
+            email: 'council@sutherland.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Mark Speakman',
+            email: 'cronulla@parliament.nsw.gov.au'
         },
         federalMP: {
             name: 'Matt Thistlethwaite',
@@ -890,8 +1162,195 @@ const LOCATION_DATA = [
             email: 'council@northernbeaches.nsw.gov.au'
         },
         stateMP: {
-            name: 'Michael Regan',
-            email: 'wakehurst@parliament.nsw.gov.au'
+            name: 'James Griffin',
+            email: 'manly@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Zali Steggall',
+            email: 'zali.steggall.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Fairlight',
+        postcode: '2091',
+        ward: 'N/A',
+        council: {
+            name: 'Northern Beaches Council',
+            email: 'council@northernbeaches.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'James Griffin',
+            email: 'manly@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Zali Steggall',
+            email: 'zali.steggall.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Balgowlah',
+        postcode: '2093',
+        ward: 'N/A',
+        council: {
+            name: 'Northern Beaches Council',
+            email: 'council@northernbeaches.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'James Griffin',
+            email: 'manly@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Zali Steggall',
+            email: 'zali.steggall.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Seaforth',
+        postcode: '2094',
+        ward: 'N/A',
+        council: {
+            name: 'Northern Beaches Council',
+            email: 'council@northernbeaches.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'James Griffin',
+            email: 'manly@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Zali Steggall',
+            email: 'zali.steggall.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Queenscliff',
+        postcode: '2096',
+        ward: 'N/A',
+        council: {
+            name: 'Northern Beaches Council',
+            email: 'council@northernbeaches.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'James Griffin',
+            email: 'manly@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Zali Steggall',
+            email: 'zali.steggall.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Collaroy',
+        postcode: '2100',
+        ward: 'N/A',
+        council: {
+            name: 'Northern Beaches Council',
+            email: 'council@northernbeaches.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'James Griffin',
+            email: 'manly@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Zali Steggall',
+            email: 'zali.steggall.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Narrabeen',
+        postcode: '2101',
+        ward: 'N/A',
+        council: {
+            name: 'Northern Beaches Council',
+            email: 'council@northernbeaches.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'James Griffin',
+            email: 'manly@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Zali Steggall',
+            email: 'zali.steggall.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Palm Beach',
+        postcode: '2102',
+        ward: 'N/A',
+        council: {
+            name: 'Northern Beaches Council',
+            email: 'council@northernbeaches.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Jacqui Scruby',
+            email: 'pittwater@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Zali Steggall',
+            email: 'zali.steggall.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Warriewood',
+        postcode: '2104',
+        ward: 'N/A',
+        council: {
+            name: 'Northern Beaches Council',
+            email: 'council@northernbeaches.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Jacqui Scruby',
+            email: 'pittwater@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Zali Steggall',
+            email: 'zali.steggall.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Elanora',
+        postcode: '2105',
+        ward: 'N/A',
+        council: {
+            name: 'Northern Beaches Council',
+            email: 'council@northernbeaches.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Jacqui Scruby',
+            email: 'pittwater@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Zali Steggall',
+            email: 'zali.steggall.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Newport',
+        postcode: '2108',
+        ward: 'N/A',
+        council: {
+            name: 'Northern Beaches Council',
+            email: 'council@northernbeaches.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Jacqui Scruby',
+            email: 'pittwater@parliament.nsw.gov.au'
+        },
+        federalMP: {
+            name: 'Zali Steggall',
+            email: 'zali.steggall.mp@aph.gov.au'
+        }
+    },
+    {
+        suburb: 'Bilgola',
+        postcode: '2109',
+        ward: 'N/A',
+        council: {
+            name: 'Northern Beaches Council',
+            email: 'council@northernbeaches.nsw.gov.au'
+        },
+        stateMP: {
+            name: 'Jacqui Scruby',
+            email: 'pittwater@parliament.nsw.gov.au'
         },
         federalMP: {
             name: 'Zali Steggall',
