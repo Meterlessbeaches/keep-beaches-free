@@ -925,56 +925,85 @@ const LOCATION_DATA = [
 
 // Email templates - EDIT THIS
 const EMAIL_TEMPLATES = {
-    subject: 'Opposition to proposed beach parking meters',
+    subject: 'Concern Regarding Proposed Parking Meters at Randwick Beaches',
     
     access: {
         greeting: 'Dear {name},',
-        body: `I am writing to express my strong opposition to the proposal to introduce paid parking meters at our beautiful eastern suburbs beaches.
+        body: `I am writing to express my strong concern regarding the proposal to introduce parking meters at Randwick's beaches.
 
-These beaches should remain accessible and affordable for everyone - local residents and visitors from across Sydney alike. Our beaches are natural treasures that belong to the entire community. Introducing parking meters would create a significant barrier for families, seniors, and casual visitors who enjoy these public spaces, regardless of where they live in Sydney.
+Beaches belong to everyone, not just those privileged enough to live within walking distance of the coast. Introducing paid parking for access to beaches amounts to rent‑seeking on public land and represents, in effect, a further privatisation of a shared public asset.
 
-I urge you to reject this proposal and explore alternative solutions that maintain free beach access for all Sydneysiders.`,
-        closing: 'Kind regards,'
+Lower‑income earners will be disproportionately affected by this proposal. For many people, travelling to the beach already involves significant time and cost. Public transport is often impractical for beach use — carrying surfboards, wetsuits, towels, umbrellas, food, and the necessities required for small children is unrealistic. Returning home on public transport with wet gear is even more difficult. For many families and individuals, driving is not a luxury but the only viable option.
+
+The proposal will also significantly reduce amenity for non‑local beach users. Even stopping briefly to check variable and sometimes dangerous water conditions would incur a fee. This may discourage people from reassessing conditions and could lead to poorer decision‑making around water activities, potentially increasing the risk of accidents and fatalities.
+
+More broadly, imposing what is effectively an access tax on people who must travel long distances to enjoy the coast runs counter to the principles of social cohesion and fairness that are often articulated by the Labor Party. The policy risks being perceived as economic discrimination and exclusionary in its impact, particularly on communities who already face barriers to accessing public spaces.
+
+I urge Council to reconsider this proposal and to pursue solutions that protect beach access as a genuinely shared public good.`,
+        closing: 'Yours sincerely,'
     },
     
     families: {
         greeting: 'Dear {name},',
-        body: `I am writing to oppose the proposed beach parking meters, which would unfairly affect families and casual visitors from across Sydney.
+        body: `I am writing to express my strong concern regarding the proposal to introduce parking meters at Randwick's beaches.
 
-Many families throughout Sydney rely on free beach parking for regular outings and recreational activities. The introduction of parking meters would place an unnecessary financial burden on households, potentially preventing children and families from enjoying these beautiful eastern suburbs beaches.
+For families with children, driving to the beach is not a luxury but the only viable option. Public transport is often impractical for beach use — carrying surfboards, wetsuits, towels, umbrellas, food, and the necessities required for small children is unrealistic. Returning home on public transport with wet gear and tired children is even more difficult.
 
-This proposal would disproportionately impact young families and those on fixed incomes, undermining the inclusive nature of our public beaches for all Sydneysiders.`,
-        closing: 'Kind regards,'
+Lower‑income families will be disproportionately affected by this proposal. Many families throughout Sydney rely on free beach parking for regular outings and recreational activities. The introduction of parking meters would place an unnecessary financial burden on households, potentially preventing children and families from enjoying these beautiful eastern suburbs beaches.
+
+This proposal runs counter to the principles of social cohesion and fairness that are often articulated by the Labor Party. The policy risks being perceived as economic discrimination and exclusionary in its impact, particularly on families who already face barriers to accessing public spaces.
+
+I am deeply disappointed that a Labor‑led council would pursue a policy that restricts equitable beach access for families through paid parking. This issue will weigh heavily on my considerations at all levels of voting in the future.
+
+I urge Council to reconsider this proposal and to pursue solutions that protect beach access as a genuinely shared public good for all Sydney families.`,
+        closing: 'Yours sincerely,'
     },
     
     streets: {
         greeting: 'Dear {name},',
-        body: `I am writing to express concerns about the proposed beach parking meters and their potential impact on nearby residential streets.
+        body: `I am writing to express my strong concern regarding the proposal to introduce parking meters at Randwick's beaches.
 
 Rather than solving parking issues, this proposal may simply push parking pressure into surrounding residential streets, creating new problems for local residents. This could lead to increased congestion, reduced street parking availability, and tensions between beach visitors and residents.
 
-I urge you to consider the broader community impact and explore solutions that don't displace parking problems into our neighborhoods.`,
-        closing: 'Kind regards,'
+The proposal will also significantly reduce amenity for non‑local beach users. Even stopping briefly to check variable and sometimes dangerous water conditions would incur a fee. This may discourage people from reassessing conditions and could lead to poorer decision‑making around water activities, potentially increasing the risk of accidents and fatalities.
+
+More broadly, imposing what is effectively an access tax on people who must travel long distances to enjoy the coast runs counter to the principles of social cohesion and fairness that are often articulated by the Labor Party. The policy risks being perceived as economic discrimination and exclusionary in its impact, particularly on communities who already face barriers to accessing public spaces.
+
+I am deeply disappointed that a Labor‑led council would pursue a policy that displaces parking problems into residential neighborhoods rather than solving them. This issue will weigh heavily on my considerations at all levels of voting in the future.
+
+I urge Council to reconsider this proposal and to pursue solutions that don't displace parking problems into our neighborhoods while maintaining safe and accessible beach access for all Sydneysiders.`,
+        closing: 'Yours sincerely,'
     },
     
     business: {
         greeting: 'Dear {name},',
-        body: `I am writing to oppose the proposed beach parking meters due to concerns about their impact on local businesses and community use.
+        body: `I am writing to express my strong concern regarding the proposal to introduce parking meters at Randwick's beaches.
 
-Our local cafes, restaurants, and shops rely on beach visitors for business. Introducing parking meters could deter visitors and negatively impact the local economy. Additionally, community groups, sports clubs, and regular beach users may be discouraged from using these important community spaces.
+Our local cafes, restaurants, and shops rely on beach visitors for business. Introducing parking meters could deter visitors and negatively impact the local economy. The proposal amounts to rent‑seeking on public land and represents, in effect, a further privatisation of a shared public asset that supports local enterprise.
 
-The long-term economic and social costs to our community could outweigh any short-term revenue gains.`,
-        closing: 'Kind regards,'
+Additionally, community groups, sports clubs, and regular beach users may be discouraged from using these important community spaces. The long-term economic and social costs to our community could outweigh any short-term revenue gains from parking meters.
+
+More broadly, imposing what is effectively an access tax on people who must travel long distances to enjoy the coast runs counter to the principles of social cohesion and fairness that are often articulated by the Labor Party. The policy risks being perceived as economic discrimination and exclusionary in its impact, particularly on communities who already face barriers to accessing public spaces that support local business activity.
+
+I am deeply disappointed that a Labor‑led council would pursue a policy that threatens local businesses and community organisations through paid parking. This issue will weigh heavily on my considerations at all levels of voting in the future.
+
+I urge Council to reconsider this proposal and to pursue solutions that maintain both beach accessibility and support for our local economy as a genuinely shared public good.`,
+        closing: 'Yours sincerely,'
     },
     
     alternatives: {
         greeting: 'Dear {name},',
-        body: `I am writing to oppose the current beach parking meter proposal and to express support for exploring alternative solutions.
+        body: `I am writing to express my strong concern regarding the proposal to introduce parking meters at Randwick's beaches.
 
-While I understand parking management may be needed, I believe there are better approaches than introducing paid parking. I support exploring alternatives such as improved public transport options, timed parking restrictions, shuttle services, or other solutions that maintain beach accessibility.
+While I understand parking management may be needed, introducing paid parking for access to beaches amounts to rent‑seeking on public land and represents, in effect, a further privatisation of a shared public asset. This approach runs counter to principles of social cohesion and fairness.
 
-I urge you to engage with the community to develop solutions that balance parking needs with keeping our beaches free and accessible for everyone.`,
-        closing: 'Kind regards,'
+I support exploring alternatives such as improved public transport options, timed parking restrictions, shuttle services, or other solutions that maintain beach accessibility without creating economic barriers for lower‑income earners and families who must travel long distances.
+
+More broadly, imposing what is effectively an access tax on people who must travel long distances to enjoy the coast runs counter to the principles of social cohesion and fairness that are often articulated by the Labor Party. The policy risks being perceived as economic discrimination and exclusionary in its impact, particularly on communities who already face barriers to accessing public spaces.
+
+I am deeply disappointed that a Labor‑led council would pursue paid parking as the first resort rather than engaging with the community to develop better solutions. This issue will weigh heavily on my considerations at all levels of voting in the future.
+
+I urge you to engage with the community to develop solutions that balance parking needs with keeping our beaches free and accessible for everyone as a genuinely shared public good.`,
+        closing: 'Yours sincerely,'
     }
 };
-
