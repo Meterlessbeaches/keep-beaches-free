@@ -105,6 +105,12 @@ function handleOfficialSubmission() {
 }
 
 function handleEmailAction() {
+    // Hide official submission button during email workflow
+    const officialSubmissionBtn = document.getElementById('official-submission-btn');
+    if (officialSubmissionBtn) {
+        officialSubmissionBtn.classList.add('hide-official-submission');
+    }
+    
     // Show location section
     elements.locationSection.style.display = 'block';
     elements.emailActionBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -137,8 +143,13 @@ function handleConcernSelect(event) {
     concernButton.classList.add('selected');
     selectedConcern = concern;
     
-    // Show email section
-    showEmailSection();
+    // Update email preview in real-time
+    updateEmailPreview();
+    
+    // Show email section if not already visible
+    if (elements.emailSection.style.display === 'none') {
+        showEmailSection();
+    }
 }
 
 function handleOpenEmail() {
@@ -177,23 +188,14 @@ function displayLocationResults(results) {
     selectedLocation = location;
     
     const resultsHTML = `
-        <h3>Found: ${location.suburb} (${location.postcode})</h3>
-        <p>Choose who you'd like to contact:</p>
-        <div class="result-card" data-recipient="submission">
-            <div class="result-title">📝 Make an official submission</div>
-            <div class="result-description">Submit your feedback through the official council consultation process</div>
-        </div>
         <div class="result-card" data-recipient="council">
             <div class="result-title">🏢 ${location.council.name}</div>
-            <div class="result-description">Email the council about your concerns</div>
         </div>
         <div class="result-card" data-recipient="state">
             <div class="result-title">🏛️ State MP: ${location.stateMP.name}</div>
-            <div class="result-description">Contact your state representative</div>
         </div>
         <div class="result-card" data-recipient="federal">
-            <div class="result-title">🏛️ Federal MP: ${location.federalMP.name}</div>
-            <div class="result-description">Contact your federal representative</div>
+            <div class="result-title">�🇸 Federal MP: ${location.federalMP.name}</div>
         </div>
     `;
     
@@ -281,13 +283,22 @@ ${template.closing}`;
     };
 }
 
-function showEmailSection() {
+function updateEmailPreview() {
+    if (!selectedRecipient || !selectedConcern) {
+        return;
+    }
+    
     const emailData = generateEmail();
     
     // Update preview
     elements.previewRecipient.textContent = emailData.to || 'No email address';
     elements.previewSubject.textContent = emailData.subject;
     elements.previewContent.textContent = emailData.body;
+}
+
+function showEmailSection() {
+    // Update preview first
+    updateEmailPreview();
     
     // Show section
     elements.emailSection.style.display = 'block';

@@ -18,6 +18,11 @@ body {
     padding: 20px;
 }
 
+/* Hide official submission button during email workflow */
+.hide-official-submission {
+    display: none !important;
+}
+
 /* Typography */
 h1 {
     font-size: 2.2rem;
