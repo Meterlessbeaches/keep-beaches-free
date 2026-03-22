@@ -1,0 +1,601 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Typography */
+h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #34495e;
+}
+
+p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    background: white;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.hero-intro {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+.deadline-banner {
+    background: #e74c3c;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.disclaimer {
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 1rem;
+}
+
+/* Primary Actions */
+.primary-actions {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Official Consultation Section */
+.consultation-section {
+    background: white;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.consultation-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+}
+
+.consultation-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.consultation-content {
+    flex: 1;
+}
+
+.consultation-content h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: #2c3e50;
+}
+
+.consultation-content p {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+.consultation-content .button {
+    align-self: flex-start;
+    text-decoration: none;
+}
+
+/* Button styles */
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    color: #333;
+    text-decoration: none;
+    padding: 1.2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    min-height: 80px;
+    text-align: center;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    border-color: #3498db;
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+.button.primary {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.button.primary:hover {
+    background: linear-gradient(135deg, #2980b9, #21618c);
+    border-color: #21618c;
+}
+
+.button.large {
+    padding: 1.5rem 2rem;
+    min-height: 90px;
+    font-size: 1.2rem;
+}
+
+.button-icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+}
+
+.button-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Location Section */
+.location-section {
+    background: white;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.lookup-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.lookup-method {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.lookup-method label {
+    font-weight: 600;
+    color: #34495e;
+}
+
+.lookup-method input,
+.lookup-method select {
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.lookup-method input:focus,
+.lookup-method select:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.lookup-divider {
+    text-align: center;
+    color: #777;
+    font-weight: 600;
+    position: relative;
+}
+
+.lookup-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #e0e0e0;
+    z-index: 0;
+}
+
+.lookup-divider::after {
+    content: '';
+    background: white;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Location Results */
+.location-results {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+}
+
+.result-card {
+    background: white;
+    border: 2px solid #e0e0e0;
+    padding: 1.2rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.result-card:hover {
+    border-color: #3498db;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.2);
+}
+
+.result-card.selected {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border-color: #2980b9;
+}
+
+.result-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.result-description {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Concern Section */
+.concern-section {
+    background: white;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.concern-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+}
+
+.concern-button {
+    display: flex;
+    align-items: center;
+    background: white;
+    color: #333;
+    border: 2px solid #e0e0e0;
+    padding: 1.2rem 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 80px;
+    text-align: left;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.concern-button:hover {
+    border-color: #3498db;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 12px rgba(52, 152, 219, 0.2);
+}
+
+.concern-button.selected {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border-color: #2980b9;
+}
+
+.concern-icon {
+    font-size: 1.5rem;
+    margin-right: 0.8rem;
+    flex-shrink: 0;
+}
+
+.concern-text {
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+/* Email Section */
+.email-section {
+    background: white;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.email-preview {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.preview-header {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.preview-body {
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.action-button {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Downloads Section */
+.downloads {
+    background: white;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.button-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+}
+
+/* Footer */
+.footer {
+    background: white;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+
+.footer-content p {
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+    color: #666;
+}
+
+.footer-content strong {
+    color: #333;
+}
+
+/* Responsive design */
+@media (min-width: 768px) {
+    .container {
+        padding: 40px 20px;
+    }
+    
+    h1 {
+        font-size: 2.8rem;
+    }
+    
+    .button-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .concern-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .button {
+        padding: 1.5rem 2rem;
+        min-height: 90px;
+    }
+    
+    .button.large {
+        padding: 2rem 2.5rem;
+        min-height: 100px;
+    }
+    
+    .concern-button {
+        padding: 1.5rem 1.2rem;
+        min-height: 85px;
+    }
+    
+    .lookup-methods {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .lookup-method {
+        flex: 1;
+    }
+    
+    .lookup-divider {
+        flex-direction: column;
+        margin: 0 2rem;
+    }
+    
+    .lookup-divider::before {
+        width: 1px;
+        height: 100%;
+        top: 0;
+        left: 50%;
+    }
+    
+    .lookup-divider::after {
+        content: 'OR';
+        transform: rotate(-90deg);
+        margin-top: -1rem;
+    }
+    
+    .consultation-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .consultation-icon {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.3rem;
+    }
+    
+    p {
+        font-size: 1rem;
+    }
+    
+    .hero {
+        padding: 1.5rem 1rem;
+    }
+    
+    .button {
+        padding: 1rem 1.2rem;
+        min-height: 70px;
+    }
+    
+    .button.large {
+        padding: 1.2rem 1.5rem;
+        min-height: 80px;
+        font-size: 1.1rem;
+    }
+    
+    .button-icon {
+        font-size: 1.3rem;
+        margin-right: 0.4rem;
+    }
+    
+    .button-text {
+        font-size: 1rem;
+    }
+    
+    .concern-button {
+        padding: 1rem 0.8rem;
+        min-height: 70px;
+        font-size: 0.95rem;
+    }
+    
+    .concern-icon {
+        font-size: 1.3rem;
+        margin-right: 0.6rem;
+    }
+    
+    .concern-text {
+        font-size: 0.95rem;
+    }
+    
+    .location-section,
+    .concern-section,
+    .email-section,
+    .downloads,
+    .footer {
+        padding: 1.5rem 1rem;
+    }
+    
+    .deadline-banner {
+        padding: 0.8rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* Accessibility */
+.button:focus,
+.concern-button:focus,
+.result-card:focus,
+input:focus,
+select:focus {
+    outline: 3px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .button {
+        border: 2px solid #333;
+    }
+    
+    .button.primary {
+        border-color: #fff;
+    }
+    
+    .concern-button,
+    .result-card {
+        border: 2px solid #333;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .button,
+    .concern-button,
+    .result-card {
+        transition: none;
+    }
+    
+    .button:hover,
+    .concern-button:hover,
+    .result-card:hover {
+        transform: none;
+    }
+}

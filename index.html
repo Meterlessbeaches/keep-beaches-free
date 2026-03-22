@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keep Our Beaches Free</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <!-- Hero / Intro Section -->
+        <header class="hero">
+            <h1 id="page-title">Keep Our Beaches Free</h1>
+            <p id="hero-intro" class="hero-intro">
+                Parking meters are being proposed for our beautiful eastern suburbs beaches. This page helps everyone who loves these beaches - locals and visitors from across Sydney - respond to the proposal and contact decision makers.
+            </p>
+            <div class="deadline-banner">
+                <strong>⏰ Consultation deadline: <span id="deadline">5pm, April 15, 2026</span></strong>
+            </div>
+            <p id="disclaimer" class="disclaimer">
+                <em>This is a community campaign page, not an official council page.</em>
+            </p>
+        </header>
+        
+        <!-- Primary Action Buttons -->
+        <section class="primary-actions">
+            <button id="official-submission-btn" class="button primary large">
+                <span class="button-icon">📝</span>
+                <span class="button-text">Make an official submission through the council webpage</span>
+            </button>
+            <button id="email-action-btn" class="button primary large">
+                <span class="button-icon">✉️</span>
+                <span class="button-text">Email your representatives</span>
+            </button>
+        </section>
+        
+                
+        <!-- Location Lookup Section -->
+        <section id="location-section" class="location-section" style="display: none;">
+            <h2>Find your representatives</h2>
+            <p id="location-intro">Whether you're a local resident or visiting from anywhere in Sydney, enter your postcode or select your suburb to see who you can contact:</p>
+            
+            <div class="lookup-methods">
+                <div class="lookup-method">
+                    <label for="postcode-input">Enter postcode:</label>
+                    <input type="text" id="postcode-input" placeholder="e.g., 2035" maxlength="4" pattern="[0-9]{4}">
+                </div>
+                
+                <div class="lookup-divider">or</div>
+                
+                <div class="lookup-method">
+                    <label for="suburb-select">Select suburb:</label>
+                    <select id="suburb-select">
+                        <option value="">Choose your suburb...</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div id="location-results" class="location-results" style="display: none;">
+                <!-- Results will be populated by JavaScript -->
+            </div>
+        </section>
+        
+        <!-- Concern Selection Section -->
+        <section id="concern-section" class="concern-section" style="display: none;">
+            <h2>What's your main concern?</h2>
+            <div class="concern-grid">
+                <button class="concern-button" data-concern="access">
+                    <span class="concern-icon">🏖️</span>
+                    <span class="concern-text">Beach access should stay affordable</span>
+                </button>
+                <button class="concern-button" data-concern="families">
+                    <span class="concern-icon">👨‍👩‍👧‍�</span>
+                    <span class="concern-text">This unfairly affects families and casual visitors</span>
+                </button>
+                <button class="concern-button" data-concern="streets">
+                    <span class="concern-icon">�</span>
+                    <span class="concern-text">It may push parking pressure into nearby streets</span>
+                </button>
+                <button class="concern-button" data-concern="business">
+                    <span class="concern-icon">�</span>
+                    <span class="concern-text">It risks harming local businesses and community use</span>
+                </button>
+                <button class="concern-button" data-concern="alternatives">
+                    <span class="concern-icon">💡</span>
+                    <span class="concern-text">I support other solutions instead</span>
+                </button>
+            </div>
+        </section>
+        
+        <!-- Email Action Section -->
+        <section id="email-section" class="email-section" style="display: none;">
+            <h2>Ready to send your email?</h2>
+            <div id="email-preview" class="email-preview">
+                <div class="preview-header">
+                    <strong>To:</strong> <span id="preview-recipient">-</span><br>
+                    <strong>Subject:</strong> <span id="preview-subject">-</span>
+                </div>
+                <div class="preview-body">
+                    <div id="preview-content">-</div>
+                </div>
+            </div>
+            <button id="open-email-btn" class="button primary large action-button">
+                <span class="button-icon">✉️</span>
+                <span class="button-text">Open email draft</span>
+            </button>
+        </section>
+        
+                
+        <!-- Footer / Trust Section -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p><strong>Community campaign disclaimer:</strong> This page is run by concerned community members, not any official body.</p>
+                <p><strong>Privacy:</strong> This page does not store your email address or message content.</p>
+                <p><strong>Source:</strong> Please check proposal details against official council consultation materials.</p>
+            </div>
+        </footer>
+    </main>
+    
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
