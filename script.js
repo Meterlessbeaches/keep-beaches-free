@@ -30,7 +30,6 @@ const elements = {
     emailSection: document.getElementById('email-section'),
     
     // Location inputs
-    postcodeInput: document.getElementById('postcode-input'),
     suburbSelect: document.getElementById('suburb-select'),
     locationResults: document.getElementById('location-results'),
     
@@ -84,7 +83,6 @@ function setupEventListeners() {
     elements.emailActionBtn.addEventListener('click', handleEmailAction);
     
     // Location inputs
-    elements.postcodeInput.addEventListener('input', handlePostcodeInput);
     elements.suburbSelect.addEventListener('change', handleSuburbSelect);
     
     // Email button
@@ -114,15 +112,6 @@ function handleEmailAction() {
     // Show location section
     elements.locationSection.style.display = 'block';
     elements.emailActionBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
-}
-
-function handlePostcodeInput(event) {
-    const postcode = event.target.value.trim();
-    if (postcode.length === 4) {
-        searchByPostcode(postcode);
-    } else {
-        hideLocationResults();
-    }
 }
 
 function handleSuburbSelect(event) {
@@ -168,11 +157,6 @@ function handleOpenEmail() {
 // LOCATION SEARCH
 // ===================================
 
-function searchByPostcode(postcode) {
-    const results = LOCATION_DATA.filter(loc => loc.postcode === postcode);
-    displayLocationResults(results);
-}
-
 function searchBySuburb(suburb) {
     const results = LOCATION_DATA.filter(loc => loc.suburb.toLowerCase() === suburb.toLowerCase());
     displayLocationResults(results);
@@ -195,7 +179,7 @@ function displayLocationResults(results) {
             <div class="result-title">🏛️ State MP: ${location.stateMP.name}</div>
         </div>
         <div class="result-card" data-recipient="federal">
-            <div class="result-title">�🇸 Federal MP: ${location.federalMP.name}</div>
+            <div class="result-title">🏛️ Federal MP: ${location.federalMP.name}</div>
         </div>
     `;
     

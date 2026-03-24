@@ -8,7 +8,7 @@ const PAGE_CONTENT = {
     heroIntro: 'Randwick Council wants to introduce parking meters at our beaches - effectively privatising public land and discriminating against families who must drive to enjoy the coast. This threatens beach access for all Sydneysiders. Take action now before the deadline.',
     deadline: '5pm, April 15, 2026',
     disclaimer: 'This is a community campaign page, not an official council page.',
-    locationIntro: 'Whether you\'re a local resident or visiting from anywhere in Sydney, enter your postcode or select your suburb to see who you can contact:'
+    locationIntro: 'Select your suburb to see who you can contact:'
 };
 
 // Official submission URL - UPDATE THIS
