@@ -75,9 +75,10 @@
         </div>
         
         <div class="counter-info">
-            <p>📈 <strong>Live statistics are being collected</strong></p>
-            <p>Visit your GoatCounter dashboard to see detailed analytics:</p>
-            <p><a href="https://meterlessbeaches.goatcounter.com/" target="_blank">meterlessbeaches.goatcounter.com</a></p>
+            <p>📈 <strong>Live Campaign Statistics</strong></p>
+            <p>Page views: <span id="hit-count">Loading...</span></p>
+            <p><small>Updated in real-time • Privacy-focused analytics</small></p>
+            <p><a href="https://meterlessbeaches.goatcounter.com/" target="_blank">View detailed analytics →</a></p>
         </div>
         
         <div class="link-back">
@@ -88,5 +89,33 @@
     <!-- GoatCounter - Privacy-focused hit counter -->
     <script data-goatcounter="https://meterlessbeaches.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>
+    
+    <script>
+        // Fetch and display live hit count
+        async function updateHitCount() {
+            try {
+                // GoatCounter API endpoint
+                const response = await fetch('https://meterlessbeaches.goatcounter.com/api/v0/counters/hits/html');
+                const text = await response.text();
+                
+                // Extract the count from the HTML response
+                const match = text.match(/<h1>(\d+)<\/h1>/);
+                if (match) {
+                    document.getElementById('hit-count').textContent = match[1];
+                } else {
+                    document.getElementById('hit-count').textContent = 'Counting...';
+                }
+            } catch (error) {
+                // Fallback if API fails
+                document.getElementById('hit-count').textContent = 'Live stats available';
+            }
+        }
+        
+        // Update count when page loads
+        updateHitCount();
+        
+        // Update every 30 seconds for live feel
+        setInterval(updateHitCount, 30000);
+    </script>
 </body>
 </html>
