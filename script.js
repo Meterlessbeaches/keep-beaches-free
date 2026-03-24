@@ -284,6 +284,11 @@ function handleRecipientSelect(event) {
     
     selectedRecipient = recipientType;
     
+    // Update email preview if email section is already visible
+    if (elements.emailSection.style.display !== 'none' && selectedConcern) {
+        updateEmailPreview();
+    }
+    
     // Show concern section
     elements.concernSection.style.display = 'block';
     elements.concernSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
