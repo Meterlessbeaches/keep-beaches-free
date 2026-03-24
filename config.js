@@ -219,8 +219,8 @@ const LOCATION_DATA = [
             email: 'newtown@parliament.nsw.gov.au'
         },
         federalMP: {
-            name: 'Tanya Plibersek',
-            email: 'tanya.plibersek.mp@aph.gov.au'
+            name: 'Anthony Albanese',
+            email: 'anthony.albanese.mp@aph.gov.au'
         }
     },
     {
@@ -236,8 +236,8 @@ const LOCATION_DATA = [
             email: 'newtown@parliament.nsw.gov.au'
         },
         federalMP: {
-            name: 'Tanya Plibersek',
-            email: 'tanya.plibersek.mp@aph.gov.au'
+            name: 'Anthony Albanese',
+            email: 'anthony.albanese.mp@aph.gov.au'
         }
     },
     {
@@ -287,8 +287,8 @@ const LOCATION_DATA = [
             email: 'balmain@parliament.nsw.gov.au'
         },
         federalMP: {
-            name: 'Tanya Plibersek',
-            email: 'tanya.plibersek.mp@aph.gov.au'
+            name: 'Anthony Albanese',
+            email: 'anthony.albanese.mp@aph.gov.au'
         }
     },
     {
@@ -304,8 +304,8 @@ const LOCATION_DATA = [
             email: 'balmain@parliament.nsw.gov.au'
         },
         federalMP: {
-            name: 'Tanya Plibersek',
-            email: 'tanya.plibersek.mp@aph.gov.au'
+            name: 'Anthony Albanese',
+            email: 'anthony.albanese.mp@aph.gov.au'
         }
     },
     {
@@ -612,8 +612,8 @@ const LOCATION_DATA = [
             email: 'coogee@parliament.nsw.gov.au'
         },
         federalMP: {
-            name: 'Tanya Plibersek',
-            email: 'tanya.plibersek.mp@aph.gov.au'
+            name: 'Allegra Spender',
+            email: 'allegra.spender.mp@aph.gov.au'
         }
     },
     {
@@ -1251,8 +1251,8 @@ const LOCATION_DATA = [
             email: 'manly@parliament.nsw.gov.au'
         },
         federalMP: {
-            name: 'Zali Steggall',
-            email: 'zali.steggall.mp@aph.gov.au'
+            name: 'Sophie Scamps',
+            email: 'sophie.scamps.mp@aph.gov.au'
         }
     },
     {
@@ -1268,8 +1268,8 @@ const LOCATION_DATA = [
             email: 'manly@parliament.nsw.gov.au'
         },
         federalMP: {
-            name: 'Zali Steggall',
-            email: 'zali.steggall.mp@aph.gov.au'
+            name: 'Sophie Scamps',
+            email: 'sophie.scamps.mp@aph.gov.au'
         }
     },
     {
