@@ -201,6 +201,14 @@ function handleConcernSelect(event) {
     if (elements.emailSection.style.display === 'none') {
         showEmailSection();
     }
+    
+    // Automatically scroll to email section
+    setTimeout(() => {
+        elements.emailSection.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+        });
+    }, 100);
 }
 
 function handleOpenEmail() {
@@ -252,6 +260,14 @@ function displayLocationResults(results) {
     elements.locationResults.querySelectorAll('.result-card').forEach(card => {
         card.addEventListener('click', handleRecipientSelect);
     });
+    
+    // Automatically scroll to contact selection
+    setTimeout(() => {
+        elements.locationResults.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+        });
+    }, 100);
 }
 
 function showNoResults() {
@@ -291,7 +307,14 @@ function handleRecipientSelect(event) {
     
     // Show concern section
     elements.concernSection.style.display = 'block';
-    elements.concernSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    
+    // Automatically scroll to concern section
+    setTimeout(() => {
+        elements.concernSection.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center' 
+        });
+    }, 100);
 }
 
 // ===================================
