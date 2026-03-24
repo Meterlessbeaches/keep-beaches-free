@@ -235,11 +235,13 @@ function displayLocationResults(results) {
     
     const resultsHTML = `
         <div class="result-card" data-recipient="state">
-            <div class="result-title">State MP: ${location.stateMP.name}</div>
+            <div class="result-title">�️ State MP: ${location.stateMP.name}</div>
         </div>
-        ${generateFederalMPsHTML(location)}
+        <div class="result-card" data-recipient="federal">
+            <div class="result-title">🏛️ Federal MP: ${location.federalMP.name}</div>
+        </div>
         <div class="result-card" data-recipient="council">
-            <div class="result-title">${location.council.name}</div>
+            <div class="result-title">� ${location.council.name}</div>
         </div>
     `;
     
@@ -269,40 +271,8 @@ function hideLocationResults() {
 }
 
 // ===================================
-// HELPER FUNCTIONS
+// RECIPIENT SELECTION
 // ===================================
-
-function generateFederalMPsHTML(location) {
-    // Check if location has multiple federal MPs
-    if (location.federalMPs && location.federalMPs.length > 0) {
-        // Multiple federal MPs - create separate cards for each
-        return location.federalMPs.map((mp, index) => `
-            <div class="result-card" data-recipient="federal-${index}">
-                <div class="result-title">Federal MP: ${mp.name} (${mp.electorate})</div>
-            </div>
-        `).join('');
-    } else if (location.federalMP) {
-        // Single federal MP (backward compatibility)
-        return `
-            <div class="result-card" data-recipient="federal">
-                <div class="result-title">Federal MP: ${location.federalMP.name}</div>
-            </div>
-        `;
-    }
-    return '';
-}
-
-function getFederalMPInfo(location, recipientType) {
-    // Handle multiple federal MPs
-    if (location.federalMPs && location.federalMPs.length > 0) {
-        const index = parseInt(recipientType.split('-')[1]);
-        return location.federalMPs[index];
-    } else if (location.federalMP) {
-        // Backward compatibility
-        return location.federalMP;
-    }
-    return null;
-}
 
 function handleRecipientSelect(event) {
     const card = event.currentTarget;
@@ -324,45 +294,50 @@ function handleRecipientSelect(event) {
 // ===================================
 
 function generateEmail() {
-    if (!selectedLocation || !selectedRecipient) {
-        alert('Please select your location and a recipient first.');
-        return;
+    const template = EMAIL_TEMPLATES[selectedConcern];
+    let recipientEmail = '';
+    let recipientName = '';
+    
+    // Handle both string-based and object-based recipients
+    if (typeof selectedRecipient === 'string') {
+        // Legacy string-based (for local reps)
+        switch (selectedRecipient) {
+            case 'council':
+                recipientEmail = selectedLocation.council.email;
+                recipientName = selectedLocation.council.name;
+                break;
+            case 'state':
+                recipientEmail = selectedLocation.stateMP.email;
+                recipientName = selectedLocation.stateMP.name;
+                break;
+            case 'federal':
+                recipientEmail = selectedLocation.federalMP.email;
+                recipientName = selectedLocation.federalMP.name;
+                break;
+            default:
+                recipientEmail = '';
+                recipientName = 'Decision Maker';
+        }
+    } else if (typeof selectedRecipient === 'object' && selectedRecipient !== null) {
+        // Object-based (for Albanese, Minns, etc.)
+        recipientEmail = selectedRecipient.email;
+        recipientName = selectedRecipient.name;
+    } else {
+        recipientEmail = '';
+        recipientName = 'Decision Maker';
     }
     
-    let recipientEmail, recipientName;
+    const emailBody = `${template.greeting.replace('{name}', recipientName)}
+
+${template.body}
+
+${template.closing}`;
     
-    switch (selectedRecipient) {
-        case 'council':
-            recipientEmail = selectedLocation.council.email;
-            recipientName = selectedLocation.council.name;
-            break;
-        case 'state':
-            recipientEmail = selectedLocation.stateMP.email;
-            recipientName = selectedLocation.stateMP.name;
-            break;
-        default:
-            // Handle federal MPs (both single and multiple)
-            if (selectedRecipient.startsWith('federal')) {
-                const federalMPInfo = getFederalMPInfo(selectedLocation, selectedRecipient);
-                if (federalMPInfo) {
-                    recipientEmail = federalMPInfo.email;
-                    recipientName = federalMPInfo.name;
-                } else {
-                    alert('Federal MP information not available.');
-                    return;
-                }
-            } else {
-                alert('Invalid recipient selected.');
-                return;
-            }
-            break;
-    }
-    
-    const subject = encodeURIComponent('Opposition to Proposed Beach Parking Meter Introduction');
-    const body = encodeURIComponent(generateEmailBody(selectedLocation, recipientName));
-    const emailUrl = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
-    
-    window.location.href = emailUrl;
+    return {
+        to: recipientEmail,
+        subject: EMAIL_TEMPLATES.subject,
+        body: emailBody
+    };
 }
 
 function updateEmailPreview() {
@@ -370,44 +345,12 @@ function updateEmailPreview() {
         return;
     }
     
-    let recipientEmail, recipientName;
-    
-    switch (selectedRecipient) {
-        case 'council':
-            recipientEmail = selectedLocation.council.email;
-            recipientName = selectedLocation.council.name;
-            break;
-        case 'state':
-            recipientEmail = selectedLocation.stateMP.email;
-            recipientName = selectedLocation.stateMP.name;
-            break;
-        default:
-            // Handle federal MPs (both single and multiple)
-            if (selectedRecipient.startsWith('federal')) {
-                const federalMPInfo = getFederalMPInfo(selectedLocation, selectedRecipient);
-                if (federalMPInfo) {
-                    recipientEmail = federalMPInfo.email;
-                    recipientName = federalMPInfo.name;
-                } else {
-                    return;
-                }
-            } else {
-                return;
-            }
-            break;
-    }
-    
-    const template = EMAIL_TEMPLATES[selectedConcern];
-    const emailBody = `${template.greeting}
-
-${template.body}
-
-${template.closing}`;
+    const emailData = generateEmail();
     
     // Update preview
-    document.getElementById('preview-recipient').textContent = `${recipientName} <${recipientEmail}>`;
-    document.getElementById('preview-subject').textContent = 'Opposition to Proposed Beach Parking Meter Introduction';
-    document.getElementById('preview-content').textContent = emailBody;
+    elements.previewRecipient.textContent = emailData.to || 'No email address';
+    elements.previewSubject.textContent = emailData.subject;
+    elements.previewContent.textContent = emailData.body;
 }
 
 function showEmailSection() {
@@ -460,7 +403,7 @@ function copyLink() {
     const originalText = copyBtn.innerHTML;
     
     navigator.clipboard.writeText("https://meterlessbeaches.github.io/keep-beaches-free/").then(() => {
-        copyBtn.innerHTML = "Link copied!";
+        copyBtn.innerHTML = "✅ Link copied!";
         copyBtn.style.background = "#27ae60";
         
         setTimeout(() => {
@@ -468,7 +411,7 @@ function copyLink() {
             copyBtn.style.background = "";
         }, 2000);
     }).catch(() => {
-        copyBtn.innerHTML = "Failed";
+        copyBtn.innerHTML = "❌ Failed";
         copyBtn.style.background = "#e74c3c";
         
         setTimeout(() => {
@@ -496,70 +439,70 @@ function shareToSocial(platform) {
     switch(platform) {
         case 'facebook':
             instructions = `
-FACEBOOK SHARING:
+📘 FACEBOOK SHARING:
 
-BEST METHOD (Copy & Paste):
-1. Click "Copy link" button above
+📋 BEST METHOD (Copy & Paste):
+1. Click "� Copy link" button above
 2. Go to Facebook and paste in a new post
 3. Add this text: "${campaignText} ${campaignUrl}"
 
-ALTERNATIVE (QR Code):
+📱 ALTERNATIVE (QR Code):
 1. Download the QR code below
 2. Go to Facebook and upload as photo
 3. Add the same campaign text
 
-TIP: The link method is fastest and works great!
+💡 TIP: The link method is fastest and works great!
 `;
             break;
         case 'twitter':
             instructions = `
-TWITTER SHARING:
+🐦 TWITTER SHARING:
 
-BEST METHOD (Copy & Paste):
-1. Click "Copy link" button above
+📋 BEST METHOD (Copy & Paste):
+1. Click "� Copy link" button above
 2. Go to Twitter and paste in a new tweet
 3. Add this text: "${campaignText} ${campaignUrl}"
 
-ALTERNATIVE (QR Code):
+📱 ALTERNATIVE (QR Code):
 1. Download the QR code below
 2. Go to Twitter and upload as image
 3. Add the same campaign text
 
-TIP: Links work great on Twitter!
+💡 TIP: Links work great on Twitter!
 `;
             break;
         case 'whatsapp':
             instructions = `
-WHATSAPP SHARING:
+💬 WHATSAPP SHARING:
 
-BEST METHOD (Copy & Paste):
-1. Click "Copy link" button above
+📋 BEST METHOD (Copy & Paste):
+1. Click "� Copy link" button above
 2. Open WhatsApp and select contacts/groups
 3. Paste the link directly
 4. Add this message: "${campaignText}"
 
-ALTERNATIVE (QR Code):
+📱 ALTERNATIVE (QR Code):
 1. Download the QR code below
 2. Share the image directly in WhatsApp
 
-TIP: Perfect for friends and community groups!
+💡 TIP: Perfect for friends and community groups!
 `;
             break;
         case 'telegram':
             instructions = `
-TELEGRAM SHARING:
+✈️ TELEGRAM SHARING:
 
-BEST METHOD (Copy & Paste):
-1. Click "Copy link" button above
+📋 BEST METHOD (Copy & Paste):
+1. Click "� Copy link" button above
 2. Open Telegram and select channels/chats
 3. Paste the link directly
 4. Add this message: "${campaignText}"
 
-ALTERNATIVE (QR Code):
+📱 ALTERNATIVE (QR Code):
 1. Download the QR code below
 2. Share the image directly in Telegram
 
-TIP: Great for community channels!
+💡 TIP: Great for community channels!
 `;
             break;
     }

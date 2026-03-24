@@ -247,7 +247,7 @@ function verifyFederalMPs() {
                     electorate: correctElectorate,
                     current: currentFederalMP.name,
                     correct: correctMP.name,
-                    status: 'CORRECT'
+                    status: '✓ CORRECT'
                 });
             } else {
                 corrections.push({
@@ -257,7 +257,7 @@ function verifyFederalMPs() {
                     current: currentFederalMP.name,
                     correct: correctMP.name,
                     correctEmail: correctMP.email,
-                    status: 'NEEDS CORRECTION'
+                    status: '❌ NEEDS CORRECTION'
                 });
             }
         } else {
@@ -265,7 +265,7 @@ function verifyFederalMPs() {
                 suburb,
                 postcode,
                 current: currentFederalMP.name,
-                status: 'NO AEC DATA FOUND'
+                status: '⚠️ NO AEC DATA FOUND'
             });
         }
     });

@@ -35,7 +35,7 @@ Replace in index.html line 116:
 1. Commit and push changes
 2. GoatCounter will start counting visits
 
-## View Your Stats
+## 📊 View Your Stats
 
 ### Dashboard Access
 - URL: `https://keep-beaches-free.goatcounter.com/`
@@ -49,23 +49,23 @@ Replace in index.html line 116:
 - **Browser/OS stats**
 - **Popular pages**
 
-## Privacy Features
+## 🔒 Privacy Features
 
-### What GoatCounter DOESN'T Track
+### ✅ What GoatCounter DOESN'T Track
 - No cookies
 - No personal data
 - No IP addresses stored
 - No tracking across sites
 - No fingerprinting
 
-### What It DOES Track
+### ✅ What It DOES Track
 - Page views (count only)
 - Approximate location (country level)
 - Referrer (which site linked here)
 - Browser type (general)
 - Time of visit
 
-## Advanced Options
+## 🛠️ Advanced Options
 
 ### Custom Dashboard
 - Add password protection
@@ -77,7 +77,7 @@ Replace in index.html line 116:
 - Full control over data
 - More complex setup
 
-## Tips
+## 💡 Tips
 
 ### For This Campaign
 - Perfect for measuring campaign reach
