@@ -92,7 +92,7 @@ p {
 }
 
 .button.with-blurb {
-    min-height: auto;
+    min-height: 80px;
     padding: 1.5rem;
     text-align: center;
     align-items: center;
@@ -488,8 +488,16 @@ p {
         min-height: 90px;
     }
     
+    .button.with-blurb {
+        min-height: 90px;
+    }
+    
     .button.large {
         padding: 2rem 2.5rem;
+        min-height: 100px;
+    }
+    
+    .button.large.with-blurb {
         min-height: 100px;
     }
     
@@ -562,10 +570,18 @@ p {
         min-height: 70px;
     }
     
+    .button.with-blurb {
+        min-height: 70px;
+    }
+    
     .button.large {
         padding: 1.2rem 1.5rem;
         min-height: 80px;
         font-size: 1.1rem;
+    }
+    
+    .button.large.with-blurb {
+        min-height: 80px;
     }
     
     .button-icon {
