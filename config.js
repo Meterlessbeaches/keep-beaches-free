@@ -4,7 +4,7 @@
 
 // Page content - EDIT THIS
 const PAGE_CONTENT = {
-    title: 'Keep Our Beaches Free',
+    title: 'Keep Maroubra Area Beaches Free',
     heroIntro: 'Randwick Council wants to introduce parking meters at our beaches - effectively privatising public land and discriminating against families who must drive to enjoy the coast. This threatens beach access for all Sydneysiders. Take action now before the deadline.',
     deadline: '5pm, April 15, 2026',
     disclaimer: 'This is a community campaign page, not an official council page.',

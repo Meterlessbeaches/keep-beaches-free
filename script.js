@@ -20,7 +20,8 @@ let selectedConcern = null;
 
 const elements = {
     // Buttons
-    officialSubmissionBtn: document.getElementById('official-submission-btn'),
+    emailAlbaneseBtn: document.getElementById('email-albanese-btn'),
+    emailMinnsBtn: document.getElementById('email-minns-btn'),
     emailActionBtn: document.getElementById('email-action-btn'),
     openEmailBtn: document.getElementById('open-email-btn'),
     
@@ -50,21 +51,58 @@ function init() {
 }
 
 function populatePageContent() {
+    console.log('Populating page content...');
+    console.log('PAGE_CONTENT.title:', PAGE_CONTENT.title);
+    
     // Update page title
-    document.getElementById('page-title').textContent = PAGE_CONTENT.title;
+    const pageTitleElement = document.getElementById('page-title');
+    if (pageTitleElement) {
+        pageTitleElement.textContent = PAGE_CONTENT.title;
+        console.log('Updated page title element');
+    } else {
+        console.error('page-title element not found');
+    }
+    
     document.title = PAGE_CONTENT.title;
+    console.log('Updated document title');
     
     // Update hero intro
-    document.getElementById('hero-intro').textContent = PAGE_CONTENT.heroIntro;
+    const heroIntroElement = document.getElementById('hero-intro');
+    if (heroIntroElement) {
+        heroIntroElement.textContent = PAGE_CONTENT.heroIntro;
+        console.log('Updated hero intro');
+    } else {
+        console.error('hero-intro element not found');
+    }
     
     // Update deadline
-    document.getElementById('deadline').textContent = PAGE_CONTENT.deadline;
+    const deadlineElement = document.getElementById('deadline');
+    if (deadlineElement) {
+        deadlineElement.textContent = PAGE_CONTENT.deadline;
+        console.log('Updated deadline');
+    } else {
+        console.error('deadline element not found');
+    }
     
     // Update disclaimer
-    document.getElementById('disclaimer').innerHTML = `<em>${PAGE_CONTENT.disclaimer}</em>`;
+    const disclaimerElement = document.getElementById('disclaimer');
+    if (disclaimerElement) {
+        disclaimerElement.innerHTML = `<em>${PAGE_CONTENT.disclaimer}</em>`;
+        console.log('Updated disclaimer');
+    } else {
+        console.error('disclaimer element not found');
+    }
     
     // Update location intro
-    document.getElementById('location-intro').textContent = PAGE_CONTENT.locationIntro;
+    const locationIntroElement = document.getElementById('location-intro');
+    if (locationIntroElement) {
+        locationIntroElement.textContent = PAGE_CONTENT.locationIntro;
+        console.log('Updated location intro');
+    } else {
+        console.error('location-intro element not found');
+    }
+    
+    console.log('Page content population complete');
 }
 
 function populateSuburbDropdown() {
@@ -79,7 +117,8 @@ function populateSuburbDropdown() {
 
 function setupEventListeners() {
     // Primary action buttons
-    elements.officialSubmissionBtn.addEventListener('click', handleOfficialSubmission);
+    elements.emailAlbaneseBtn.addEventListener('click', handleEmailAlbanese);
+    elements.emailMinnsBtn.addEventListener('click', handleEmailMinns);
     elements.emailActionBtn.addEventListener('click', handleEmailAction);
     
     // Location inputs
@@ -98,20 +137,43 @@ function setupEventListeners() {
 // EVENT HANDLERS
 // ===================================
 
-function handleOfficialSubmission() {
-    window.open(OFFICIAL_SUBMISSION_URL, '_blank');
+function handleEmailAlbanese() {
+    // Set up for Anthony Albanese
+    selectedRecipient = {
+        name: 'Anthony Albanese',
+        email: 'anthony.albanese.mp@aph.gov.au',
+        type: 'federal'
+    };
+    
+    // Show concern selection
+    showConcernSelection();
+}
+
+function handleEmailMinns() {
+    // Set up for Chris Minns
+    selectedRecipient = {
+        name: 'Chris Minns',
+        email: 'kogarah@parliament.nsw.gov.au',
+        type: 'state'
+    };
+    
+    // Show concern selection
+    showConcernSelection();
 }
 
 function handleEmailAction() {
-    // Hide official submission button during email workflow
-    const officialSubmissionBtn = document.getElementById('official-submission-btn');
-    if (officialSubmissionBtn) {
-        officialSubmissionBtn.classList.add('hide-official-submission');
-    }
-    
     // Show location section
     elements.locationSection.style.display = 'block';
     elements.emailActionBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function showConcernSelection() {
+    // Hide location section if visible
+    elements.locationSection.style.display = 'none';
+    
+    // Show concern section
+    elements.concernSection.style.display = 'block';
+    elements.concernSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
 function handleSuburbSelect(event) {
@@ -172,14 +234,14 @@ function displayLocationResults(results) {
     selectedLocation = location;
     
     const resultsHTML = `
-        <div class="result-card" data-recipient="council">
-            <div class="result-title">🏢 ${location.council.name}</div>
-        </div>
         <div class="result-card" data-recipient="state">
-            <div class="result-title">🏛️ State MP: ${location.stateMP.name}</div>
+            <div class="result-title">�️ State MP: ${location.stateMP.name}</div>
         </div>
         <div class="result-card" data-recipient="federal">
             <div class="result-title">🏛️ Federal MP: ${location.federalMP.name}</div>
+        </div>
+        <div class="result-card" data-recipient="council">
+            <div class="result-title">� ${location.council.name}</div>
         </div>
     `;
     
@@ -236,22 +298,33 @@ function generateEmail() {
     let recipientEmail = '';
     let recipientName = '';
     
-    switch (selectedRecipient) {
-        case 'council':
-            recipientEmail = selectedLocation.council.email;
-            recipientName = 'Randwick City Council';
-            break;
-        case 'state':
-            recipientEmail = selectedLocation.stateMP.email;
-            recipientName = selectedLocation.stateMP.name;
-            break;
-        case 'federal':
-            recipientEmail = selectedLocation.federalMP.email;
-            recipientName = selectedLocation.federalMP.name;
-            break;
-        default:
-            recipientEmail = '';
-            recipientName = 'Decision Maker';
+    // Handle both string-based and object-based recipients
+    if (typeof selectedRecipient === 'string') {
+        // Legacy string-based (for local reps)
+        switch (selectedRecipient) {
+            case 'council':
+                recipientEmail = selectedLocation.council.email;
+                recipientName = selectedLocation.council.name;
+                break;
+            case 'state':
+                recipientEmail = selectedLocation.stateMP.email;
+                recipientName = selectedLocation.stateMP.name;
+                break;
+            case 'federal':
+                recipientEmail = selectedLocation.federalMP.email;
+                recipientName = selectedLocation.federalMP.name;
+                break;
+            default:
+                recipientEmail = '';
+                recipientName = 'Decision Maker';
+        }
+    } else if (typeof selectedRecipient === 'object' && selectedRecipient !== null) {
+        // Object-based (for Albanese, Minns, etc.)
+        recipientEmail = selectedRecipient.email;
+        recipientName = selectedRecipient.name;
+    } else {
+        recipientEmail = '';
+        recipientName = 'Decision Maker';
     }
     
     const emailBody = `${template.greeting.replace('{name}', recipientName)}
