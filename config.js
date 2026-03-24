@@ -63,10 +63,18 @@ const LOCATION_DATA = [
             name: 'Marjorie O\'Neill',
             email: 'coogee@parliament.nsw.gov.au'
         },
-        federalMP: {
-            name: 'Matt Thistlethwaite',
-            email: 'matt.thistlethwaite.mp@aph.gov.au'
-        }
+        federalMPs: [
+            {
+                name: 'Matt Thistlethwaite',
+                email: 'matt.thistlethwaite.mp@aph.gov.au',
+                electorate: 'Kingsford Smith'
+            },
+            {
+                name: 'Allegra Spender',
+                email: 'allegra.spender.mp@aph.gov.au',
+                electorate: 'Wentworth'
+            }
+        ]
     },
     {
         suburb: 'Randwick',
@@ -80,10 +88,18 @@ const LOCATION_DATA = [
             name: 'Marjorie O\'Neill',
             email: 'coogee@parliament.nsw.gov.au'
         },
-        federalMP: {
-            name: 'Matt Thistlethwaite',
-            email: 'matt.thistlethwaite.mp@aph.gov.au'
-        }
+        federalMPs: [
+            {
+                name: 'Matt Thistlethwaite',
+                email: 'matt.thistlethwaite.mp@aph.gov.au',
+                electorate: 'Kingsford Smith'
+            },
+            {
+                name: 'Allegra Spender',
+                email: 'allegra.spender.mp@aph.gov.au',
+                electorate: 'Wentworth'
+            }
+        ]
     },
     {
         suburb: 'Kingsford',
@@ -218,10 +234,18 @@ const LOCATION_DATA = [
             name: 'Jenny Leong',
             email: 'newtown@parliament.nsw.gov.au'
         },
-        federalMP: {
-            name: 'Anthony Albanese',
-            email: 'anthony.albanese.mp@aph.gov.au'
-        }
+        federalMPs: [
+            {
+                name: 'Anthony Albanese',
+                email: 'anthony.albanese.mp@aph.gov.au',
+                electorate: 'Grayndler'
+            },
+            {
+                name: 'Tanya Plibersek',
+                email: 'tanya.plibersek.mp@aph.gov.au',
+                electorate: 'Sydney'
+            }
+        ]
     },
     {
         suburb: 'Enmore',
@@ -235,10 +259,18 @@ const LOCATION_DATA = [
             name: 'Jenny Leong',
             email: 'newtown@parliament.nsw.gov.au'
         },
-        federalMP: {
-            name: 'Anthony Albanese',
-            email: 'anthony.albanese.mp@aph.gov.au'
-        }
+        federalMPs: [
+            {
+                name: 'Anthony Albanese',
+                email: 'anthony.albanese.mp@aph.gov.au',
+                electorate: 'Grayndler'
+            },
+            {
+                name: 'Tanya Plibersek',
+                email: 'tanya.plibersek.mp@aph.gov.au',
+                electorate: 'Sydney'
+            }
+        ]
     },
     {
         suburb: 'Camperdown',
@@ -303,10 +335,18 @@ const LOCATION_DATA = [
             name: 'Kobi Shetty',
             email: 'balmain@parliament.nsw.gov.au'
         },
-        federalMP: {
-            name: 'Anthony Albanese',
-            email: 'anthony.albanese.mp@aph.gov.au'
-        }
+        federalMPs: [
+            {
+                name: 'Anthony Albanese',
+                email: 'anthony.albanese.mp@aph.gov.au',
+                electorate: 'Grayndler'
+            },
+            {
+                name: 'Tanya Plibersek',
+                email: 'tanya.plibersek.mp@aph.gov.au',
+                electorate: 'Sydney'
+            }
+        ]
     },
     {
         suburb: 'Five Dock',
@@ -405,10 +445,18 @@ const LOCATION_DATA = [
             name: 'Jo Haylen',
             email: 'summerhill@parliament.nsw.gov.au'
         },
-        federalMP: {
-            name: 'Tanya Plibersek',
-            email: 'tanya.plibersek.mp@aph.gov.au'
-        }
+        federalMPs: [
+            {
+                name: 'Anne Stanley',
+                email: 'anne.stanley.mp@aph.gov.au',
+                electorate: 'Barton'
+            },
+            {
+                name: 'Anthony Albanese',
+                email: 'anthony.albanese.mp@aph.gov.au',
+                electorate: 'Grayndler'
+            }
+        ]
     },
     {
         suburb: 'Dulwich Hill',
@@ -422,10 +470,18 @@ const LOCATION_DATA = [
             name: 'Jo Haylen',
             email: 'summerhill@parliament.nsw.gov.au'
         },
-        federalMP: {
-            name: 'Tanya Plibersek',
-            email: 'tanya.plibersek.mp@aph.gov.au'
-        }
+        federalMPs: [
+            {
+                name: 'Anne Stanley',
+                email: 'anne.stanley.mp@aph.gov.au',
+                electorate: 'Barton'
+            },
+            {
+                name: 'Anthony Albanese',
+                email: 'anthony.albanese.mp@aph.gov.au',
+                electorate: 'Grayndler'
+            }
+        ]
     },
     {
         suburb: 'Tempe',
@@ -439,10 +495,18 @@ const LOCATION_DATA = [
             name: 'Jo Haylen',
             email: 'summerhill@parliament.nsw.gov.au'
         },
-        federalMP: {
-            name: 'Tanya Plibersek',
-            email: 'tanya.plibersek.mp@aph.gov.au'
-        }
+        federalMPs: [
+            {
+                name: 'Anne Stanley',
+                email: 'anne.stanley.mp@aph.gov.au',
+                electorate: 'Barton'
+            },
+            {
+                name: 'Anthony Albanese',
+                email: 'anthony.albanese.mp@aph.gov.au',
+                electorate: 'Grayndler'
+            }
+        ]
     },
     {
         suburb: 'Sydenham',
@@ -456,10 +520,18 @@ const LOCATION_DATA = [
             name: 'Jo Haylen',
             email: 'summerhill@parliament.nsw.gov.au'
         },
-        federalMP: {
-            name: 'Tanya Plibersek',
-            email: 'tanya.plibersek.mp@aph.gov.au'
-        }
+        federalMPs: [
+            {
+                name: 'Anne Stanley',
+                email: 'anne.stanley.mp@aph.gov.au',
+                electorate: 'Barton'
+            },
+            {
+                name: 'Anthony Albanese',
+                email: 'anthony.albanese.mp@aph.gov.au',
+                electorate: 'Grayndler'
+            }
+        ]
     },
     {
         suburb: 'Burwood',

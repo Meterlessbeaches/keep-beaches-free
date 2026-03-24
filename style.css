@@ -637,15 +637,297 @@ select:focus {
     .button {
         border: 2px solid #333;
     }
-    
-    .button.primary {
-        border-color: #fff;
+}
+
+/* Spread Message Section */
+.spread-message-section {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.spread-message-section h3 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-size: 1.3rem;
+}
+
+.social-sharing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Primary Share Button */
+.share-button {
+    width: 100%;
+    background: #3498db !important;
+    color: white !important;
+    border: 2px solid #3498db !important;
+    box-shadow: 0 4px 20px rgba(52, 152, 219, 0.4) !important;
+    transition: all 0.3s ease !important;
+    font-size: 1.1rem !important;
+    padding: 1.2rem 2rem !important;
+}
+
+.share-button:hover {
+    background: #2980b9 !important;
+    border-color: #2980b9 !important;
+    box-shadow: 0 6px 25px rgba(41, 128, 185, 0.6) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Secondary Copy Link Button */
+.copy-link-button {
+    width: 100%;
+    background: #95a5a6 !important;
+    color: white !important;
+    border: 2px solid #95a5a6 !important;
+    box-shadow: 0 4px 15px rgba(149, 165, 166, 0.3) !important;
+    transition: all 0.3s ease !important;
+}
+
+.copy-link-button:hover {
+    background: #7f8c8d !important;
+    border-color: #7f8c8d !important;
+    box-shadow: 0 6px 20px rgba(127, 140, 141, 0.5) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* QR Code Section (Tertiary) */
+.qr-code-section {
+    text-align: center;
+    padding: 1.5rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 1px solid #e9ecef;
+    width: 100%;
+}
+
+.qr-code-preview {
+    margin-bottom: 1rem;
+}
+
+.qr-code-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+}
+
+.qr-code-caption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #6c757d;
+    font-style: italic;
+}
+
+.download-qr-button {
+    background: #6c757d !important;
+    color: white !important;
+    border: 2px solid #6c757d !important;
+    font-size: 0.9rem !important;
+    padding: 0.8rem 1.5rem !important;
+}
+
+.download-qr-button:hover {
+    background: #5a6268 !important;
+    border-color: #5a6268 !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Fallback Share Section */
+.fallback-share {
+    text-align: center;
+    width: 100%;
+    padding: 1.5rem;
+    background: #fff3cd;
+    border-radius: 12px;
+    border: 1px solid #ffeaa7;
+}
+
+.fallback-text {
+    margin: 0 0 1rem 0;
+    font-size: 0.9rem;
+    color: #856404;
+    font-weight: 500;
+}
+
+.social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .social-sharing {
+        max-width: 300px;
     }
     
-    .concern-button,
-    .result-card {
-        border: 2px solid #333;
+    .social-buttons {
+        max-width: 250px;
     }
+    
+    .social-button {
+        flex: 1 1 calc(50% - 0.4rem);
+        min-width: 100px;
+        font-size: 0.8rem;
+        padding: 0.6rem 1rem;
+    }
+}
+
+.qr-code-preview {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.qr-code-link {
+    display: inline-block;
+    text-decoration: none;
+    border: 3px solid #27ae60;
+    border-radius: 12px;
+    padding: 8px;
+    background: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.2);
+}
+
+.qr-code-link:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(39, 174, 96, 0.3);
+    border-color: #229954;
+}
+
+.qr-code-image {
+    width: 150px;
+    height: 150px;
+    display: block;
+    border-radius: 8px;
+}
+
+.qr-code-caption {
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+}
+
+.social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 500px;
+}
+
+@media (max-width: 768px) {
+    .social-buttons {
+        max-width: 300px;
+    }
+    
+    .social-button {
+        flex: 1 1 calc(50% - 0.5rem);
+        min-width: 120px;
+        justify-content: center;
+    }
+}
+
+.social-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.social-icon {
+    font-size: 1.1rem;
+}
+
+.social-button.facebook {
+    background: #1877f2;
+    color: white;
+}
+
+.social-button.facebook:hover {
+    background: #166fe5;
+    transform: translateY(-2px);
+}
+
+.social-button.twitter {
+    background: #1da1f2;
+    color: white;
+}
+
+.social-button.twitter:hover {
+    background: #1a91da;
+    transform: translateY(-2px);
+}
+
+.social-button.whatsapp {
+    background: #25d366;
+    color: white;
+}
+
+.social-button.whatsapp:hover {
+    background: #22c857;
+    transform: translateY(-2px);
+}
+
+.social-button.telegram {
+    background: #0088cc;
+    color: white;
+}
+
+.social-button.telegram:hover {
+    background: #0077bb;
+    transform: translateY(-2px);
+}
+
+.spread-message-section .button {
+    display: inline-flex;
+    text-decoration: none;
+}
+
+.upload-button {
+    background: #3498db !important;
+    color: white !important;
+    border: 2px solid #3498db !important;
+    box-shadow: 0 4px 20px rgba(52, 152, 219, 0.4) !important;
+    transition: all 0.3s ease !important;
+}
+
+.upload-button:hover {
+    background: #2980b9 !important;
+    border-color: #2980b9 !important;
+    box-shadow: 0 6px 25px rgba(41, 128, 185, 0.6) !important;
+    transform: translateY(-2px) !important;
+}
+
+.spread-button {
+    background: #27ae60 !important;
+    color: white !important;
+    border: 2px solid #27ae60 !important;
+    box-shadow: 0 4px 20px rgba(39, 174, 96, 0.4) !important;
+    transition: all 0.3s ease !important;
+}
+
+.spread-button:hover {
+    background: #229954 !important;
+    border-color: #229954 !important;
+    box-shadow: 0 6px 25px rgba(34, 153, 84, 0.6) !important;
+    transform: translateY(-2px) !important;
 }
 
 /* Reduced motion support */

@@ -235,13 +235,11 @@ function displayLocationResults(results) {
     
     const resultsHTML = `
         <div class="result-card" data-recipient="state">
-            <div class="result-title">�️ State MP: ${location.stateMP.name}</div>
+            <div class="result-title">State MP: ${location.stateMP.name}</div>
         </div>
-        <div class="result-card" data-recipient="federal">
-            <div class="result-title">🏛️ Federal MP: ${location.federalMP.name}</div>
-        </div>
+        ${generateFederalMPsHTML(location)}
         <div class="result-card" data-recipient="council">
-            <div class="result-title">� ${location.council.name}</div>
+            <div class="result-title">${location.council.name}</div>
         </div>
     `;
     
@@ -271,8 +269,40 @@ function hideLocationResults() {
 }
 
 // ===================================
-// RECIPIENT SELECTION
+// HELPER FUNCTIONS
 // ===================================
+
+function generateFederalMPsHTML(location) {
+    // Check if location has multiple federal MPs
+    if (location.federalMPs && location.federalMPs.length > 0) {
+        // Multiple federal MPs - create separate cards for each
+        return location.federalMPs.map((mp, index) => `
+            <div class="result-card" data-recipient="federal-${index}">
+                <div class="result-title">Federal MP: ${mp.name} (${mp.electorate})</div>
+            </div>
+        `).join('');
+    } else if (location.federalMP) {
+        // Single federal MP (backward compatibility)
+        return `
+            <div class="result-card" data-recipient="federal">
+                <div class="result-title">Federal MP: ${location.federalMP.name}</div>
+            </div>
+        `;
+    }
+    return '';
+}
+
+function getFederalMPInfo(location, recipientType) {
+    // Handle multiple federal MPs
+    if (location.federalMPs && location.federalMPs.length > 0) {
+        const index = parseInt(recipientType.split('-')[1]);
+        return location.federalMPs[index];
+    } else if (location.federalMP) {
+        // Backward compatibility
+        return location.federalMP;
+    }
+    return null;
+}
 
 function handleRecipientSelect(event) {
     const card = event.currentTarget;
@@ -294,50 +324,45 @@ function handleRecipientSelect(event) {
 // ===================================
 
 function generateEmail() {
-    const template = EMAIL_TEMPLATES[selectedConcern];
-    let recipientEmail = '';
-    let recipientName = '';
-    
-    // Handle both string-based and object-based recipients
-    if (typeof selectedRecipient === 'string') {
-        // Legacy string-based (for local reps)
-        switch (selectedRecipient) {
-            case 'council':
-                recipientEmail = selectedLocation.council.email;
-                recipientName = selectedLocation.council.name;
-                break;
-            case 'state':
-                recipientEmail = selectedLocation.stateMP.email;
-                recipientName = selectedLocation.stateMP.name;
-                break;
-            case 'federal':
-                recipientEmail = selectedLocation.federalMP.email;
-                recipientName = selectedLocation.federalMP.name;
-                break;
-            default:
-                recipientEmail = '';
-                recipientName = 'Decision Maker';
-        }
-    } else if (typeof selectedRecipient === 'object' && selectedRecipient !== null) {
-        // Object-based (for Albanese, Minns, etc.)
-        recipientEmail = selectedRecipient.email;
-        recipientName = selectedRecipient.name;
-    } else {
-        recipientEmail = '';
-        recipientName = 'Decision Maker';
+    if (!selectedLocation || !selectedRecipient) {
+        alert('Please select your location and a recipient first.');
+        return;
     }
     
-    const emailBody = `${template.greeting.replace('{name}', recipientName)}
-
-${template.body}
-
-${template.closing}`;
+    let recipientEmail, recipientName;
     
-    return {
-        to: recipientEmail,
-        subject: EMAIL_TEMPLATES.subject,
-        body: emailBody
-    };
+    switch (selectedRecipient) {
+        case 'council':
+            recipientEmail = selectedLocation.council.email;
+            recipientName = selectedLocation.council.name;
+            break;
+        case 'state':
+            recipientEmail = selectedLocation.stateMP.email;
+            recipientName = selectedLocation.stateMP.name;
+            break;
+        default:
+            // Handle federal MPs (both single and multiple)
+            if (selectedRecipient.startsWith('federal')) {
+                const federalMPInfo = getFederalMPInfo(selectedLocation, selectedRecipient);
+                if (federalMPInfo) {
+                    recipientEmail = federalMPInfo.email;
+                    recipientName = federalMPInfo.name;
+                } else {
+                    alert('Federal MP information not available.');
+                    return;
+                }
+            } else {
+                alert('Invalid recipient selected.');
+                return;
+            }
+            break;
+    }
+    
+    const subject = encodeURIComponent('Opposition to Proposed Beach Parking Meter Introduction');
+    const body = encodeURIComponent(generateEmailBody(selectedLocation, recipientName));
+    const emailUrl = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+    
+    window.location.href = emailUrl;
 }
 
 function updateEmailPreview() {
@@ -345,12 +370,44 @@ function updateEmailPreview() {
         return;
     }
     
-    const emailData = generateEmail();
+    let recipientEmail, recipientName;
+    
+    switch (selectedRecipient) {
+        case 'council':
+            recipientEmail = selectedLocation.council.email;
+            recipientName = selectedLocation.council.name;
+            break;
+        case 'state':
+            recipientEmail = selectedLocation.stateMP.email;
+            recipientName = selectedLocation.stateMP.name;
+            break;
+        default:
+            // Handle federal MPs (both single and multiple)
+            if (selectedRecipient.startsWith('federal')) {
+                const federalMPInfo = getFederalMPInfo(selectedLocation, selectedRecipient);
+                if (federalMPInfo) {
+                    recipientEmail = federalMPInfo.email;
+                    recipientName = federalMPInfo.name;
+                } else {
+                    return;
+                }
+            } else {
+                return;
+            }
+            break;
+    }
+    
+    const template = EMAIL_TEMPLATES[selectedConcern];
+    const emailBody = `${template.greeting}
+
+${template.body}
+
+${template.closing}`;
     
     // Update preview
-    elements.previewRecipient.textContent = emailData.to || 'No email address';
-    elements.previewSubject.textContent = emailData.subject;
-    elements.previewContent.textContent = emailData.body;
+    document.getElementById('preview-recipient').textContent = `${recipientName} <${recipientEmail}>`;
+    document.getElementById('preview-subject').textContent = 'Opposition to Proposed Beach Parking Meter Introduction';
+    document.getElementById('preview-content').textContent = emailBody;
 }
 
 function showEmailSection() {
@@ -371,4 +428,141 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
 } else {
     init();
+}
+
+// ===================================
+// SOCIAL MEDIA SHARING
+// ===================================
+
+// Primary: Native Share API (mobile-first)
+async function shareCampaign() {
+    const shareData = {
+        title: "Keep Maroubra Area Beaches Free",
+        text: "Randwick Council wants to introduce parking meters at our beaches - effectively privatising public land and discriminating against families. Take action now!",
+        url: "https://meterlessbeaches.github.io/keep-beaches-free/"
+    };
+
+    if (navigator.share) {
+        try {
+            await navigator.share(shareData);
+        } catch (err) {
+            console.log("Share cancelled or failed");
+        }
+    } else {
+        // Show fallback options for desktop
+        document.getElementById("fallbackShare").style.display = "block";
+    }
+}
+
+// Secondary: Copy Link
+function copyLink() {
+    const copyBtn = document.getElementById("copyLinkBtn");
+    const originalText = copyBtn.innerHTML;
+    
+    navigator.clipboard.writeText("https://meterlessbeaches.github.io/keep-beaches-free/").then(() => {
+        copyBtn.innerHTML = "Link copied!";
+        copyBtn.style.background = "#27ae60";
+        
+        setTimeout(() => {
+            copyBtn.innerHTML = originalText;
+            copyBtn.style.background = "";
+        }, 2000);
+    }).catch(() => {
+        copyBtn.innerHTML = "Failed";
+        copyBtn.style.background = "#e74c3c";
+        
+        setTimeout(() => {
+            copyBtn.innerHTML = originalText;
+            copyBtn.style.background = "";
+        }, 2000);
+    });
+}
+
+// Tertiary: Download QR Code
+function downloadQR() {
+    const link = document.createElement("a");
+    link.href = "Meterless-beaches.png";
+    link.download = "keep-beaches-free-qr.png";
+    link.click();
+}
+
+// Fallback: Social Media Instructions
+function shareToSocial(platform) {
+    const campaignUrl = 'https://meterlessbeaches.github.io/keep-beaches-free/';
+    const campaignText = 'Randwick Council wants to introduce parking meters at our beaches - effectively privatising public land and discriminating against families. Take action now!';
+    
+    let instructions = '';
+    
+    switch(platform) {
+        case 'facebook':
+            instructions = `
+FACEBOOK SHARING:
+
+BEST METHOD (Copy & Paste):
+1. Click "Copy link" button above
+2. Go to Facebook and paste in a new post
+3. Add this text: "${campaignText} ${campaignUrl}"
+
+ALTERNATIVE (QR Code):
+1. Download the QR code below
+2. Go to Facebook and upload as photo
+3. Add the same campaign text
+
+TIP: The link method is fastest and works great!
+`;
+            break;
+        case 'twitter':
+            instructions = `
+TWITTER SHARING:
+
+BEST METHOD (Copy & Paste):
+1. Click "Copy link" button above
+2. Go to Twitter and paste in a new tweet
+3. Add this text: "${campaignText} ${campaignUrl}"
+
+ALTERNATIVE (QR Code):
+1. Download the QR code below
+2. Go to Twitter and upload as image
+3. Add the same campaign text
+
+TIP: Links work great on Twitter!
+`;
+            break;
+        case 'whatsapp':
+            instructions = `
+WHATSAPP SHARING:
+
+BEST METHOD (Copy & Paste):
+1. Click "Copy link" button above
+2. Open WhatsApp and select contacts/groups
+3. Paste the link directly
+4. Add this message: "${campaignText}"
+
+ALTERNATIVE (QR Code):
+1. Download the QR code below
+2. Share the image directly in WhatsApp
+
+TIP: Perfect for friends and community groups!
+`;
+            break;
+        case 'telegram':
+            instructions = `
+TELEGRAM SHARING:
+
+BEST METHOD (Copy & Paste):
+1. Click "Copy link" button above
+2. Open Telegram and select channels/chats
+3. Paste the link directly
+4. Add this message: "${campaignText}"
+
+ALTERNATIVE (QR Code):
+1. Download the QR code below
+2. Share the image directly in Telegram
+
+TIP: Great for community channels!
+`;
+            break;
+    }
+    
+    alert(instructions);
 }

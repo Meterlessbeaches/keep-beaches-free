@@ -77,23 +77,18 @@
             <h2>What's your main concern?</h2>
             <div class="concern-grid">
                 <button class="concern-button" data-concern="access">
-                    <span class="concern-icon">🏖️</span>
                     <span class="concern-text">Beach access should stay affordable</span>
                 </button>
                 <button class="concern-button" data-concern="families">
-                    <span class="concern-icon">👨‍👩‍👧‍👦</span>
                     <span class="concern-text">This unfairly affects families and casual visitors</span>
                 </button>
                 <button class="concern-button" data-concern="streets">
-                    <span class="concern-icon">🏠</span>
                     <span class="concern-text">It may push parking pressure into nearby streets</span>
                 </button>
                 <button class="concern-button" data-concern="business">
-                    <span class="concern-icon">🏪</span>
                     <span class="concern-text">It risks harming local businesses and community use</span>
                 </button>
                 <button class="concern-button" data-concern="alternatives">
-                    <span class="concern-icon">💡</span>
                     <span class="concern-text">I support other solutions instead</span>
                 </button>
             </div>
@@ -125,6 +120,54 @@
                 <p><strong>Source:</strong> Please check proposal details against official council consultation materials.</p>
             </div>
         </footer>
+        
+        <!-- Spread the Message Section -->
+        <div class="spread-message-section">
+            <h3>Share this campaign</h3>
+            <div class="social-sharing">
+                <!-- Primary Action: Native Share -->
+                <button onclick="shareCampaign()" class="button primary large share-button">
+                    Share this campaign
+                </button>
+                
+                <!-- Secondary Action: Copy Link -->
+                <button onclick="copyLink()" class="button secondary large copy-link-button" id="copyLinkBtn">
+                    Copy link
+                </button>
+                
+                <!-- QR Code Section -->
+                <div class="qr-code-section">
+                    <div class="qr-code-preview">
+                        <a href="Meterless-beaches.png" download="Meterless-beaches.png" class="qr-code-link" title="Click to download QR code">
+                            <img src="Meterless-beaches.png" alt="Keep Maroubra Area Beaches Free - QR Code" class="qr-code-image" id="qrCodeImg">
+                        </a>
+                        <p class="qr-code-caption">Scan or share this QR code to spread the message</p>
+                    </div>
+                    <button onclick="downloadQR()" class="button secondary small download-qr-button">
+                        Download QR Code
+                    </button>
+                </div>
+                
+                <!-- Fallback Share Buttons (hidden by default) -->
+                <div id="fallbackShare" class="fallback-share" style="display:none;">
+                    <p class="fallback-text">Or share on social media:</p>
+                    <div class="social-buttons">
+                        <a href="#" onclick="shareToSocial('facebook')" class="social-button facebook">
+                            Facebook
+                        </a>
+                        <a href="#" onclick="shareToSocial('twitter')" class="social-button twitter">
+                            Twitter
+                        </a>
+                        <a href="#" onclick="shareToSocial('whatsapp')" class="social-button whatsapp">
+                            WhatsApp
+                        </a>
+                        <a href="#" onclick="shareToSocial('telegram')" class="social-button telegram">
+                            Telegram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     
     <script src="config.js"></script>
