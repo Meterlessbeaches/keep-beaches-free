@@ -138,11 +138,12 @@ function setupEventListeners() {
 // ===================================
 
 function handleEmailAlbanese() {
-    // Set up for Anthony Albanese
+    // Set up for Anthony Albanese (contact form workflow)
     selectedRecipient = {
         name: 'Anthony Albanese',
         email: 'anthony.albanese.mp@aph.gov.au',
-        type: 'federal'
+        type: 'federal',
+        isContactForm: true // Flag for special handling
     };
     
     // Show concern selection
@@ -218,9 +219,69 @@ function handleOpenEmail() {
     }
     
     const emailData = generateEmail();
-    const mailtoLink = `mailto:${emailData.to}?subject=${encodeURIComponent(emailData.subject)}&body=${encodeURIComponent(emailData.body)}`;
     
-    window.location.href = mailtoLink;
+    // Check if this is Albanese contact form workflow
+    if (selectedRecipient && selectedRecipient.isContactForm) {
+        // Copy the message to clipboard
+        const fullMessage = `Subject: ${emailData.subject}\n\n${emailData.body}`;
+        
+        navigator.clipboard.writeText(fullMessage).then(() => {
+            // Show success feedback
+            const originalText = elements.openEmailBtn.textContent;
+            elements.openEmailBtn.textContent = '✅ Message copied! Opening form...';
+            
+            // Show instructional popup
+            showAlbaneseInstructions();
+            
+            // Navigate to Albanese contact form after a short delay
+            setTimeout(() => {
+                window.location.href = 'https://www.pm.gov.au/contact#no-back';
+            }, 2000); // Give more time to read instructions
+        }).catch(() => {
+            // Fallback if clipboard fails
+            alert('Could not copy message. Please copy manually and then we\'ll open the contact form.');
+            setTimeout(() => {
+                window.location.href = 'https://www.pm.gov.au/contact#no-back';
+            }, 1000);
+        });
+    } else {
+        // Normal email workflow for other recipients
+        const mailtoLink = `mailto:${emailData.to}?subject=${encodeURIComponent(emailData.subject)}&body=${encodeURIComponent(emailData.body)}`;
+        window.location.href = mailtoLink;
+    }
+}
+
+function showAlbaneseInstructions() {
+    const instructions = `
+📋 INSTRUCTIONS FOR ANTHONY ALBANESE'S CONTACT FORM
+
+✅ Your message has been copied to clipboard!
+🌐 This page will automatically navigate to the contact form in 2 seconds.
+
+📝 HOW TO COMPLETE THE FORM:
+
+1️⃣ PASTE YOUR MESSAGE:
+   • Click in the "Message" field
+   • Paste (Ctrl+V or Cmd+V) your copied message
+   • Your subject and message will appear together
+
+2️⃣ FILL YOUR DETAILS (Optional but recommended):
+   • Name: Your full name
+   • Email: Your email address
+   • Phone: Your phone number
+   • Postcode: Your postcode
+
+3️⃣ SUBMIT:
+   • Review your message
+   • Click "Submit" button
+   • Your message will be sent to Anthony Albanese
+
+💡 TIP: Including your contact details helps them respond to you directly.
+
+⏰ You'll be redirected to the contact form automatically.
+`;
+    
+    alert(instructions);
 }
 
 // ===================================
@@ -384,6 +445,15 @@ function updateEmailPreview() {
 function showEmailSection() {
     // Update preview first
     updateEmailPreview();
+    
+    // Check if this is Albanese contact form workflow
+    if (selectedRecipient && selectedRecipient.isContactForm) {
+        // Update button text for Albanese contact form
+        elements.openEmailBtn.textContent = 'Copy message and open the contact form';
+    } else {
+        // Reset to default text for other recipients
+        elements.openEmailBtn.textContent = 'Open email draft';
+    }
     
     // Show section
     elements.emailSection.style.display = 'block';
